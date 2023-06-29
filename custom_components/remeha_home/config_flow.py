@@ -1,4 +1,4 @@
-"""Config flow for Remeha Home."""
+"""Config flow for Baxi Home."""
 from typing import Any
 import logging
 

@@ -1,4 +1,4 @@
-"""Platform for Remeha Home climate integration."""
+"""Platform for Baxi Home climate integration."""
 from __future__ import annotations
 from typing import Any
 import logging
@@ -59,7 +59,7 @@ async def async_setup_entry(
     entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Setup the Remeha Home climate entity from a config entry."""
+    """Setup the Baxi Home climate entity from a config entry."""
     api = hass.data[DOMAIN][entry.entry_id]["api"]
     coordinator = hass.data[DOMAIN][entry.entry_id]["coordinator"]
 
@@ -73,7 +73,7 @@ async def async_setup_entry(
 
 
 class RemehaHomeClimateEntity(CoordinatorEntity, ClimateEntity):
-    """Climate entity representing a Remeha Home climate zone."""
+    """Climate entity representing a Baxi Home climate zone."""
 
     _attr_supported_features = (
         ClimateEntityFeature.TARGET_TEMPERATURE | ClimateEntityFeature.PRESET_MODE
@@ -81,7 +81,7 @@ class RemehaHomeClimateEntity(CoordinatorEntity, ClimateEntity):
     _attr_temperature_unit = UnitOfTemperature.CELSIUS
     _attr_precision = PRECISION_HALVES
     _attr_has_entity_name = True
-    _attr_translation_key = "remeha_home"
+    _attr_translation_key = "baxi_home"
 
     def __init__(
         self,

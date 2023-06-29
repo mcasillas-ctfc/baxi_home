@@ -17,7 +17,7 @@
     },
     "entity": {
         "climate": {
-            "remeha_home": {
+            "baxi_home": {
                 "state_attributes": {
                     "preset_mode": {
                         "state": {

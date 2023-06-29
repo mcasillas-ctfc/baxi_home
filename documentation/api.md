@@ -1,12 +1,14 @@
-# Remeha Home API
-__All of the following information was obtained by sniffing the app traffic.__
-__Please use this information responsibly.__
+# Baxi Home API
 
-The API used by the Remeha Home app is located at `https://api.bdrthermea.net/Mobile/api/`.
+**All of the following information was obtained by sniffing the app traffic.**
+**Please use this information responsibly.**
+
+The API used by the Baxi Home app is located at `https://api.bdrthermea.net/Mobile/api/`.
 To make requests to the API, a valid OAuth2 token is required.
 This token can be obtained by authenticating with BDR B2C OAuth2 API.
 
 All API requests should have the following two headers:
+
 ```
 Authorization: Bearer <token>
 Ocp-Apim-Subscription-Key: df605c5470d846fc91e848b1cc653ddf
@@ -15,9 +17,11 @@ Ocp-Apim-Subscription-Key: df605c5470d846fc91e848b1cc653ddf
 Each of the following sections gives an example of the output for the different endpoints.
 
 ## GET `/homes/dashboard`
+
 This endpoint is used to get the dashboard information that is shown when the app is first opened.
 
 Response:
+
 ```json
 {
   "appliances": [
@@ -125,9 +129,11 @@ Response:
 ```
 
 ## POST `/climate-zones/{climate_zone_id}/modes/manual`
+
 Set the climate zone to manual mode.
 
 Request:
+
 ```json
 {
   "roomTemperatureSetPoint": 16.0
@@ -135,11 +141,13 @@ Request:
 ```
 
 ## POST `/climate-zones/{climate_zone_id}/modes/schedule`
+
 Set the climate zone to schedule mode.
 The `heatingProgramId` should match the currently selected heating program, but cannot be used to change the heating program.
 For changing the heating program, see the `/climate-zones/{climate_zone_id}/time-programs/heating/{time_program_id}/activate` api.
 
 Request:
+
 ```json
 {
   "heatingProgramId": 1
@@ -147,9 +155,11 @@ Request:
 ```
 
 ## POST `/climate-zones/{climate_zone_id}/modes/temporary-override`
+
 Set the climate zone to temporary override mode.
 
 Request:
+
 ```json
 {
   "roomTemperatureSetPoint": 20.0
@@ -157,15 +167,19 @@ Request:
 ```
 
 ## POST `/climate-zones/{climate_zone_id}/modes/anti-frost`
+
 Set the climate zone to anti-frost (off) mode.
 
 ## POST `/climate-zones/{climate_zone_id}/time-programs/heating/{time_program_id}/activate`
+
 Activate a time program for the schedule mode.
 
 ## POST `/climate-zones/{climate_zone_id}/modes/fireplacemode`
+
 Enable or disable fireplace mode.
 
 Request:
+
 ```json
 {
   "fireplaceModeActive": true
@@ -173,10 +187,12 @@ Request:
 ```
 
 ## GET `appliances/{appliance_id}/energyconsumption/daily`
+
 Get the daily energy consumption of the appliance.
 This request requires two query parameters, `startDate` and `endDate`, which should contain an ISO-8601 timestamp, e.g. `2023-01-03 00:00:00.000Z`.
 
 Response:
+
 ```json
 {
   "startDateTimeUsed": "2023-01-03T00:00:00+00:00",
@@ -197,9 +213,11 @@ Response:
 ```
 
 ## GET `appliances/{appliance_id}/energyconsumption/monthly`
+
 Get the monthly energy consumption of the appliance.
 See `daily` for the response format.
 
 ## GET `appliances/{appliance_id}/energyconsumption/yearly`
+
 Get the yearly energy consumption of the appliance.
 See `daily` for the response format.

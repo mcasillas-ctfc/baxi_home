@@ -1,4 +1,4 @@
-"""The Remeha Home integration."""
+"""The Baxi Home integration."""
 from __future__ import annotations
 
 from homeassistant.config_entries import ConfigEntry
@@ -22,7 +22,7 @@ PLATFORMS: list[Platform] = [
 
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
-    """Set up Remeha Home."""
+    """Set up Baxi Home."""
     hass.data.setdefault(DOMAIN, {})
 
     RemehaHomeLoginFlowHandler.async_register_implementation(
@@ -34,7 +34,7 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
-    """Set up Remeha Home from a config entry."""
+    """Set up Baxi Home from a config entry."""
     implementation = (
         await config_entry_oauth2_flow.async_get_config_entry_implementation(
             hass, entry

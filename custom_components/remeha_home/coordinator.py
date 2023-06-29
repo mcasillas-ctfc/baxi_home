@@ -16,10 +16,10 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class RemehaHomeUpdateCoordinator(DataUpdateCoordinator):
-    """Remeha Home update coordinator."""
+    """Baxi Home update coordinator."""
 
     def __init__(self, hass: HomeAssistantType, api: RemehaHomeAPI) -> None:
-        """Initialize Remeha Home update coordinator."""
+        """Initialize Baxi Home update coordinator."""
         super().__init__(
             hass,
             _LOGGER,
@@ -70,7 +70,7 @@ class RemehaHomeUpdateCoordinator(DataUpdateCoordinator):
             self.device_info[appliance_id] = DeviceInfo(
                 identifiers={(DOMAIN, appliance_id)},
                 name=appliance["houseName"],
-                manufacturer="Remeha",
+                manufacturer="Baxi",
                 model=self.technical_info[appliance_id]["applianceName"],
             )
 
@@ -84,7 +84,7 @@ class RemehaHomeUpdateCoordinator(DataUpdateCoordinator):
                 self.device_info[climate_zone_id] = DeviceInfo(
                     identifiers={(DOMAIN, climate_zone_id)},
                     name=climate_zone["name"],
-                    manufacturer="Remeha",
+                    manufacturer="Baxi",
                     model=technical_info["name"],
                     hw_version=technical_info["hardwareVersion"],
                     sw_version=technical_info["softwareVersion"],
@@ -97,7 +97,7 @@ class RemehaHomeUpdateCoordinator(DataUpdateCoordinator):
                 self.device_info[hot_water_zone_id] = DeviceInfo(
                     identifiers={(DOMAIN, hot_water_zone_id)},
                     name=hot_water_zone["name"],
-                    manufacturer="Remeha",
+                    manufacturer="Baxi",
                     model="Hot Water Zone",
                     via_device=(DOMAIN, appliance_id),
                 )

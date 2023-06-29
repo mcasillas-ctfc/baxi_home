@@ -170,17 +170,17 @@ class RemehaHomeOAuth2Implementation(AbstractOAuth2Implementation):
         with async_timeout.timeout(60):
             # Request the login page starting a new login transaction
             response = await self._session.get(
-                "https://remehalogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/oauth2/v2.0/authorize",
+                "https://baxilogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/oauth2/v2.0/authorize",
                 params={
                     "response_type": "code",
                     "client_id": "6ce007c6-0628-419e-88f4-bee2e6418eec",
-                    "redirect_uri": "com.b2c.remehaapp://login-callback",
+                    "redirect_uri": "com.b2c.baxiapp://login-callback",
                     "scope": "openid https://bdrb2cprod.onmicrosoft.com/iotdevice/user_impersonation offline_access",
                     "state": random_state,
                     "code_challenge": code_challenge_sha256,
                     "code_challenge_method": "S256",
                     "p": "B2C_1A_RPSignUpSignInNewRoomV3.1",
-                    "brand": "remeha",
+                    "brand": "baxi",
                     "lang": "en",
                     "nonce": "defaultNonce",
                     "prompt": "login",
@@ -204,13 +204,13 @@ class RemehaHomeOAuth2Implementation(AbstractOAuth2Implementation):
                 for cookie in self._session.cookie_jar
                 if (
                     cookie.key == "x-ms-cpim-csrf"
-                    and cookie["domain"] == "remehalogin.bdrthermea.net"
+                    and cookie["domain"] == "baxilogin.bdrthermea.net"
                 )
             )
 
             # Post the user credentials to authenticate
             response = await self._session.post(
-                "https://remehalogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/B2C_1A_RPSignUpSignInNewRoomv3.1/SelfAsserted",
+                "https://baxilogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/B2C_1A_RPSignUpSignInNewRoomv3.1/SelfAsserted",
                 params={
                     "tx": "StateProperties=" + state_properties,
                     "p": "B2C_1A_RPSignUpSignInNewRoomv3.1",
@@ -231,7 +231,7 @@ class RemehaHomeOAuth2Implementation(AbstractOAuth2Implementation):
 
             # Request the authentication complete callback
             response = await self._session.get(
-                "https://remehalogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/B2C_1A_RPSignUpSignInNewRoomv3.1/api/CombinedSigninAndSignup/confirmed",
+                "https://baxilogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/B2C_1A_RPSignUpSignInNewRoomv3.1/api/CombinedSigninAndSignup/confirmed",
                 params={
                     "rememberMe": "false",
                     "csrf_token": csrf_token,
@@ -251,7 +251,7 @@ class RemehaHomeOAuth2Implementation(AbstractOAuth2Implementation):
             grant_params = {
                 "grant_type": "authorization_code",
                 "code": authorization_code,
-                "redirect_uri": "com.b2c.remehaapp://login-callback",
+                "redirect_uri": "com.b2c.baxiapp://login-callback",
                 "code_verifier": code_challenge,
                 "client_id": "6ce007c6-0628-419e-88f4-bee2e6418eec",
             }
@@ -274,7 +274,7 @@ class RemehaHomeOAuth2Implementation(AbstractOAuth2Implementation):
         """Call the OAuth2 token endpoint with specific grant paramters."""
         with async_timeout.timeout(30):
             async with self._session.post(
-                "https://remehalogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1A_RPSignUpSignInNewRoomV3.1",
+                "https://baxilogin.bdrthermea.net/bdrb2cprod.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1A_RPSignUpSignInNewRoomV3.1",
                 data=grant_params,
                 allow_redirects=True,
             ) as response:

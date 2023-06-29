@@ -1,4 +1,4 @@
-"""Constants for the Remeha Home integration."""
+"""Constants for the Baxi Home integration."""
 from homeassistant.components.sensor import (
     SensorEntityDescription,
     SensorDeviceClass,
@@ -10,7 +10,7 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.const import UnitOfTemperature, UnitOfPressure
 
-DOMAIN = "remeha_home"
+DOMAIN = "baxi_home"
 
 APPLIANCE_SENSOR_TYPES = [
     SensorEntityDescription(
