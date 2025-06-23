@@ -29,7 +29,7 @@ If you are unable to use the Baxi Home app for your thermostat, this integration
 
 ### Install with HACS (recommended)
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=msvisser&repository=baxi_home&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=mcasillas-ctfc&repository=baxi_home&category=integration)
 
 Do you have [HACS](https://hacs.xyz/) installed?
 Click the button or follow the instructions.
